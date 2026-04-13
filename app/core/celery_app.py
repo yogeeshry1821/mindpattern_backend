@@ -1,16 +1,16 @@
 # app/core/celery_app.py
 from celery import Celery
-
+import os
 # 'localhost' works because we mapped the Docker port to your host machine
-REDIS_URL = "redis://localhost:6379/0"
+
+# Use the env var, default to the docker service name 'redis'
+broker_url = os.getenv("REDIS_URL", "redis://redis:6379/0")
 
 celery_app = Celery(
     "mindpattern",
-    broker=REDIS_URL,
-    backend=REDIS_URL,
-    include=["app.modules.intelligence.tasks"] 
+    broker=broker_url,
+    backend=broker_url
 )
-
 celery_app.conf.update(
     task_serializer="json",
     result_serializer="json",

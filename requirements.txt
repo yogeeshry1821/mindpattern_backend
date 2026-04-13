@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+celery
+redis
+psycopg[binary]
+python-dotenv
+# Add these if you are using them for Llama/AI
+langchain
+openai
+ollama
+sqlalchemy
+psycopg2
