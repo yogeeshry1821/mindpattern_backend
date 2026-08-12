@@ -10,3 +10,4 @@ openai
 ollama
 sqlalchemy
 psycopg2
+groq
